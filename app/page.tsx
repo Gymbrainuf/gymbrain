@@ -7,16 +7,19 @@ import { Group } from 'three';
 import { OrbitControls } from '@react-three/drei'
 import { useFBX } from '@react-three/drei'
 
+import { redirect } from "next/navigation";
+
+
 function FBXModel () {
-  const fbx = useFBX("https://wzoufxhlnywsvostunnp.supabase.co/storage/v1/object/public/FBX%20file/Remy1.fbx") as Group;
+  const fbx = useFBX("https://ykjpsxpbfyosepeghsrr.supabase.co/storage/v1/object/public/Remi/Remy.fbx") as Group;
   return( <primitive object={fbx} scale ={0.02} position ={[0, -4, 0]}/>)
 }
 
-  
-function headklick() { const [text, setText] = useState('Click the button!') };
-function rightarmklick() { console.log("right");};
-function leftarmklick() { console.log("left");};
-function bodyklick() { console.log("body");};
+
+function headklick() {  };
+function rightarmklick() { redirect("/armpage"); };
+function leftarmklick() { redirect("/armpage"); };
+function bodyklick() { console.log("body"); };
 function rightlegklick() { console.log("rightleg");};
 function leftlegklick() { console.log("leftleg");};
 
@@ -29,12 +32,12 @@ export default function App() {
       height: '100vh', 
       position: 'fixed', 
       top: 0, 
-      left: 0,
-      color: 'white', 
+      left: 60,
+       
     }} >
       
 
-      <Canvas style={{ width: '100%', height: '100%' }}> <color attach="background" args={['#436cbf']} />
+      <Canvas style={{ width: '100%', height: '100%' }}> 
         
       
 
@@ -67,16 +70,19 @@ export default function App() {
        
         <directionalLight color="white" position={[1, 1, 0]} />
 
-        <FBXModel/>
-          
           
           <planeGeometry args={[50, 50]} />
        <OrbitControls enablePan={false} enableZoom={true} minPolarAngle={Math.PI / 2.7} maxPolarAngle={Math.PI / 2.7} />
        
-      
+      <Suspense>
+
+        <FBXModel></FBXModel>
+      </Suspense>
 
         
       </Canvas>
+
+      
     </div>
     <div className='bg-slate-700 flex place-self-end rounded-lg  ' style={{ 
       width: '30vw', 
@@ -84,7 +90,7 @@ export default function App() {
       position: 'fixed', 
       top: 30, 
       right: 100
-    }}>  </div>
+    }}> <div className='p-4'> Stuff here</div> </div>
   
 
     </div>

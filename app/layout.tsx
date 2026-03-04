@@ -55,7 +55,7 @@ export default function RootLayout({
       <div className="pt-2">
         <Link href="/auth/login">
     <Image
-      src="/body-outline.png"
+      src="/body-outline.svg"
       width={50}
       height={50}
       alt="Picture of the author"

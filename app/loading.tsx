@@ -12,7 +12,7 @@ export default function Loading() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      background: 'white',
+      background: 'black',
       zIndex: 9999
     }}>
     <div className=" flex h-screen items-center justify-center">
